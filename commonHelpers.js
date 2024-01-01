@@ -7,5 +7,5 @@ import"./assets/modulepreload-polyfill-ec808ebb.js";import{S as t}from"./assets/
       alt="${i}"
     />
   </a>
-</li>`,"");new t(".gallery a",{});
+</li>`,"");new t(".gallery a",{captionDelay:250,captionsData:"alt"});
 //# sourceMappingURL=commonHelpers.js.map
