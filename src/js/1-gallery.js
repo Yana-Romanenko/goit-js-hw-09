@@ -1,6 +1,6 @@
 'use strict'
+import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import simpleLightbox from "simplelightbox";
 
 const images = [
   {
@@ -89,6 +89,9 @@ gallery.innerHTML = images.reduce(
 </li>`,
   '',
 );
+
+let lightbox = new SimpleLightbox('.gallery a', { /* options */ });
+
 
 
 
