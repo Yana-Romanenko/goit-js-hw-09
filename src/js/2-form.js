@@ -24,12 +24,11 @@ try {
     Array.from(feedbackForm.elements).forEach(element => {
         const storageValue = initialFormData[element.name];
         if (initialFormData) {
-            if (initialFormData === null) return;
-            else {
-                element.value = storageValue;
-            }
+            return;
+        } else {
+            element.value = storageValue;
         }
     });
-} catch (e) {
+    } catch (element) {
     console.error('PARSE ERROR')
 }
