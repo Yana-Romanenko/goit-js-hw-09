@@ -8,7 +8,7 @@ try {
   const storageValue = JSON.parse(localStorage.getItem(STORAGE_DATA_KEY));
   if (storageValue) {
     for (let key in storageValue) {
-     console.log(feedbackForm.elements[key].value = storageValue[key]); 
+     feedbackForm.elements[key].value = storageValue[key]; 
     }
   }
 } catch (error) {
