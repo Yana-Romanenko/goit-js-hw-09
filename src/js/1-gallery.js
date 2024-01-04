@@ -70,8 +70,6 @@ const images = [
 
 
 
-
-
 const gallery = document.querySelector('.gallery');
 
 gallery.innerHTML = images.reduce(
@@ -82,7 +80,6 @@ gallery.innerHTML = images.reduce(
     <img
       class="gallery-image"
       src="${preview}"
-      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -97,31 +94,3 @@ let lightbox = new SimpleLightbox('.gallery a', {
 
 
 
-// const myModal = basicLightbox.create(`<img class="big-gallery-image" src="" width="1112px" height="640px">`,
-//   {
-//     onShow: () => {
-//       document.addEventListener('keydown', onEscapeKeyPress);
-//     },
-//     onClose: () => {
-//       document.removeEventListener('keydown', onEscapeKeyPress);
-//     }
-//   });
-
-//   function onEscapeKeyPress(event) {
-//     if (event.code === 'Escape') {
-//       myModal.close();
-//     }
-//   }
-
-//   galleryBox.addEventListener('click', (event) => {
-//     event.preventDefault();
-//     if (event.target.tagName !== 'IMG') {
-//         return;
-//     }
-
-// const bigImg = myModal.element().querySelector('.big-gallery-image');
-// const imageSrc = event.target.dataset.source;
-// bigImg.src = imageSrc;
-
-//     myModal.show();
-// });
