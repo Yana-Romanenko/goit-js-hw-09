@@ -1,29 +1,48 @@
 'use strict'
 
-const feedbackForm = document.querySelector('.feedback-form');
-const STORAGE_DATA_KEY = 'feedback-form-state';
- let formObject = {};
+document.addEventListener('DOMContentLoaded', () => {
+  const feedbackForm = document.querySelector('.feedback-form');
+  const emailInput = feedbackForm.querySelector('input[name="email"]');
+  const messageInput = feedbackForm.querySelector('textarea[name="message"]');
+  const STORAGE_DATA_KEY = 'feedback-form-state';
 
-try {
-  const storageValue = JSON.parse(localStorage.getItem(STORAGE_DATA_KEY));
-  if (storageValue) {
-    for (let key in storageValue) {
-     feedbackForm.elements[key].value = storageValue[key]; 
+  const storageValue = JSON.parse(localStorage.getItem(STORAGE_DATA_KEY)) || {};
+  emailInput.value = storageValue.email || '';
+  messageInput.value = storageValue.message || '';
+
+  feedbackForm.addEventListener('input', (event) => {
+    if (event.target.name === 'email' || event.target.name === 'message') {
+      const currentValue = {
+        email: emailInput.value.trim(),  
+        message: messageInput.value.trim(),  
+      };
+      localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(currentValue));
     }
-  }
-} catch (error) {
-  console.error('PARSE ERROR');
-};
+  });
 
+  feedbackForm.addEventListener('submit', (event) => {
+    event.preventDefault();
 
-feedbackForm.addEventListener('input', event => {
-  formObject[event.target.name] = event.target.value.trim();
-  localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(formObject));
-});
+    const currentValue = {
+      email: emailInput.value.trim(),  
+      message: messageInput.value.trim(), 
+    };
+    localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(currentValue));
 
-feedbackForm.addEventListener('submit', event => {
-  event.preventDefault();
-  console.log(formObject);
-  localStorage.removeItem(STORAGE_DATA_KEY);
+    if (currentValue.email === '' || currentValue.message === '') {
+      alert('Please fill in both email and message fields.');
+      return;
+    }
+
+    const formData = {
+      email: currentValue.email,
+      message: currentValue.message,
+    };
+    console.log(formData);
+
+    emailInput.value = '';
+    messageInput.value = '';
+    localStorage.removeItem(STORAGE_DATA_KEY);
   feedbackForm.reset();
+  });
 });
