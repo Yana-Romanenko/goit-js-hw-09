@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(currentValue));
 
-    if (currentValue.email === '' || currentValue.message === '') {
-      alert('Please fill in both email and message fields.');
-      return;
+    if (!currentValue.email || !currentValue.message) {
+      alert('Please fill in both email and message fields');
+     
     }
 
     const formData = {
