@@ -29,19 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     localStorage.setItem(STORAGE_DATA_KEY, JSON.stringify(currentValue));
 
-    if (!currentValue.email || !currentValue.message) {
-      alert('Please fill in both email and message fields');
-     
+    if (!currentValue.email) {
+      alert('Please fill in email field');
+      return;
+    } 
+    if (!currentValue.message) {
+      alert('Please fill in message field');
+      return;
     }
-
-    const formData = {
-      email: currentValue.email,
-      message: currentValue.message,
-    };
-    console.log(formData);
-
-    emailInput.value = '';
-    messageInput.value = '';
+    console.log(currentValue);
     localStorage.removeItem(STORAGE_DATA_KEY);
   feedbackForm.reset();
   });
